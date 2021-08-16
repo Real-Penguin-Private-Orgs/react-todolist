@@ -16,13 +16,18 @@ function TodoList({todo, index, completeTodo, removeTodo}) {
     )
 }
 
-function Todoform({ addTodo }) {
+function Todoform({ addTodo, onKeyDown }) {
  
   const [value, setValue] = useState("");
+  const [error, setError] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if(!value) return;
+    if(value.indexOf(' ') >= 0){
+      setError("contains spaces");
+      return;
+    }
     addTodo(value);
     setValue("");
   }
@@ -30,6 +35,9 @@ function Todoform({ addTodo }) {
   return(
     <form className="todo-form" onSubmit={handleSubmit}>
       <h3>Add Something</h3>
+      <div style={{ fontSize: '12px', color: 'red' }}>
+          {error}
+      </div>
       <input
         type="text"
         className="input"
