@@ -24,10 +24,11 @@ function Todoform({ addTodo, onKeyDown }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if(!value) return;
-    if(value.indexOf(' ') >= 0){
+    if(value.indexOf(' ') <= 0){
       setError("contains spaces");
-      return;
-    }
+      value.replace(/\s+/g, '');
+      return
+    } 
     addTodo(value);
     setValue("");
   }
