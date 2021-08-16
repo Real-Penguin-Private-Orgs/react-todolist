@@ -64,12 +64,14 @@ function App() {
   const completeTodo = index => {
     const newTodos = [...todos];
     newTodos[index].isCompleted = true;
+    window.localStorage.setItem('todos', JSON.stringify(newTodos));
     setTodos(newTodos);
   };
 
   const removeTodo = index => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
+    window.localStorage.setItem('todos', JSON.stringify(newTodos));
     setTodos(newTodos);
   };
 
