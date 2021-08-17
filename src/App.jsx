@@ -24,9 +24,14 @@ function Todoform({ addTodo }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if(!value) return;
-    if(value.indexOf(' ') <= 0){
+    // if(value.indexOf(' ') <= 0){
+    //   setError("contains spaces");
+    //   value.replace(/\s+/g, ' ');
+    //   return
+    // } 
+    if(value.lastIndexOf(' ') >= 0){
       setError("contains spaces");
-      value.replace(/\s+/g, '');
+      value.replace(/\s+/g, ' ');
       return
     } 
     addTodo(value);
