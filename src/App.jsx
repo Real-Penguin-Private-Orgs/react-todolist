@@ -16,7 +16,7 @@ function TodoList({todo, index, completeTodo, removeTodo}) {
     )
 }
 
-function Todoform({ addTodo, onKeyDown }) {
+function Todoform({ addTodo }) {
  
   const [value, setValue] = useState("");
   const [error, setError] = useState();
